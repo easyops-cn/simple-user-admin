@@ -8405,7 +8405,7 @@ left-pad@^1.3.0:
   resolved "https://registry.npm.taobao.org/left-pad/download/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
   integrity sha1-W4o6d2Xf4AEmHd6RVYnngvjJTR4=
 
-lerna@^3.18.4:
+lerna@^3.20.2:
   version "3.20.2"
   resolved "https://registry.npm.taobao.org/lerna/download/lerna-3.20.2.tgz#abf84e73055fe84ee21b46e64baf37b496c24864"
   integrity sha1-q/hOcwVf6E7iG0bmS683tJbCSGQ=

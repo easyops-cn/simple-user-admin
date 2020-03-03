@@ -21,6 +21,9 @@
                   "properties": {
                     "textContent": "hello, faker"
                   }
+                },
+                {
+                  "brick": "user-admin.user-admin"
                 }
               ]
             }

@@ -8,17 +8,20 @@ users = [
     {
         "name": 'u1',
         "age": 16,
-        "address": 'x'
+        "address": 'x',
+        'valid': False
     },
     {
         "name": 'u2',
         "age": 17,
-        "address": 'y'
+        "address": 'y',
+        'valid': False
     },
     {
         "name": 'u3',
         "age": 18,
-        "address": 'z'
+        "address": 'z',
+        'valid': True
     },
 ]
 
@@ -39,7 +42,7 @@ class ServerHandler(BaseHTTPRequestHandler):
             message = json.dumps(user)
         else:
             message = 'hello, world'
-            
+
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header('Content-Type', 'application/json')

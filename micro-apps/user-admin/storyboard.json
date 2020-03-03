@@ -71,6 +71,27 @@
                       {
                         "title": "地址",
                         "dataIndex": "address"
+                      },
+                      {
+                        "title": "状态",
+                        "dataIndex": "valid",
+                        "useBrick": {
+                          "brick": "presentational-bricks.brick-value-mapping",
+                          "transformFrom": "cellData",
+                          "transform": "value",
+                          "properties": {
+                            "mapping": {
+                              "true": {
+                                "text": "在职",
+                                "color": "green"
+                              },
+                              "false": {
+                                "text": "离职",
+                                "color": "red"
+                              }
+                            }
+                          }
+                        }
                       }
                     ]
                   }

@@ -9,6 +9,7 @@
   "routes": [
     {
       "path": "/faker-demo",
+      "exact": true,
       "bricks": [
         {
           "brick": "basic-bricks.micro-view",
@@ -54,6 +55,89 @@
                         "dataIndex": "address"
                       }
                     ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "${APP.homepage}/create",
+      "exact": true,
+      "bricks": [
+        {
+          "brick": "basic-bricks.micro-view",
+          "slots": {
+            "content": {
+              "type": "bricks",
+              "bricks": [
+                {
+                  "brick": "basic-bricks.general-card",
+                  "properties": {
+                    "configProps": {
+                      "title": "新建用户"
+                    }
+                  },
+                  "slots": {
+                    "content": {
+                      "type": "bricks",
+                      "bricks": [
+                        {
+                          "brick": "forms.general-form",
+                          "slots": {
+                            "items": {
+                              "type": "bricks",
+                              "bricks": [
+                                {
+                                  "brick": "forms.general-input",
+                                  "properties": {
+                                    "name": "name",
+                                    "label": "名称",
+                                    "placeholder": "请输入名称",
+                                    "required": true
+                                  }
+                                },
+                                {
+                                  "brick": "forms.general-input-number",
+                                  "properties": {
+                                    "name": "age",
+                                    "label": "年龄",
+                                    "placeholder": "请输入年龄",
+                                    "required": false
+                                  }
+                                },
+                                {
+                                  "brick": "forms.general-input",
+                                  "properties": {
+                                    "name": "address",
+                                    "label": "地址",
+                                    "placeholder": "请输入地址"
+                                  }
+                                },
+                                {
+                                  "brick": "forms.general-buttons",
+                                  "properties": {
+                                    "showCancelButton": true,
+                                    "submitText": "提交",
+                                    "cancelText": "取消"
+                                  },
+                                  "events": {
+                                    "submit.button.click": {
+                                      "action": "console.log"
+                                    },
+                                    "cancel.button.click": {
+                                      "action": "console.log"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               ]

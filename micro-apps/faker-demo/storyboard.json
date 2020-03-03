@@ -24,6 +24,37 @@
                 },
                 {
                   "brick": "user-admin.user-admin"
+                },
+                {
+                  "brick": "user-admin.provider-user-list",
+                  "bg": true
+                },
+                {
+                  "brick": "presentational-bricks.brick-table",
+                  "lifeCycle": {
+                    "useResolves": [
+                      {
+                        "provider": "user-admin\\.provider-user-list",
+                        "name": "dataSource"
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "columns": [
+                      {
+                        "title": "名称",
+                        "dataIndex": "name"
+                      },
+                      {
+                        "title": "年龄",
+                        "dataIndex": "age"
+                      },
+                      {
+                        "title": "地址",
+                        "dataIndex": "address"
+                      }
+                    ]
+                  }
                 }
               ]
             }

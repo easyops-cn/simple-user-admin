@@ -6,5 +6,17 @@
     "id": "faker-demo",
     "homepage": "/faker-demo"
   },
-  "routes": []
+  "routes": [
+    {
+      "path": "/faker-demo",
+      "bricks": [
+        {
+          "brick": "div",
+          "properties": {
+            "textContent": "hello, faker"
+          }
+        }
+      ]
+    }
+  ]
 }

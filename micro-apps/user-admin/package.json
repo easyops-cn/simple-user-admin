@@ -1,8 +1,8 @@
 {
-  "name": "@micro-apps/faker-demo",
+  "name": "@micro-apps/user-admin",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "homepage": "undefined/tree/master/micro-apps/faker-demo",
+  "homepage": "undefined/tree/master/micro-apps/user-admin",
   "license": "UNLICENSED",
   "files": [
     "storyboard.json",

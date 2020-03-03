@@ -2,7 +2,7 @@
   "name": "@micro-apps/user-admin",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "homepage": "undefined/tree/master/micro-apps/user-admin",
+  "homepage": "https://github.com/easyops-cn/simple-user-admin/tree/master/micro-apps/user-admin",
   "license": "UNLICENSED",
   "files": [
     "storyboard.json",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@git.easyops.local:anyclouds/brick-next.git"
+    "url": "https://github.com/easyops-cn/simple-user-admin"
   },
   "scripts": {
     "build": "echo 'nothing to build but lerna need this to build deps'",

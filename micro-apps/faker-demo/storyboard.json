@@ -11,9 +11,19 @@
       "path": "/faker-demo",
       "bricks": [
         {
-          "brick": "div",
-          "properties": {
-            "textContent": "hello, faker"
+          "brick": "basic-bricks.micro-view",
+          "slots": {
+            "content": {
+              "type": "bricks",
+              "bricks": [
+                {
+                  "brick": "div",
+                  "properties": {
+                    "textContent": "hello, faker"
+                  }
+                }
+              ]
+            }
           }
         }
       ]

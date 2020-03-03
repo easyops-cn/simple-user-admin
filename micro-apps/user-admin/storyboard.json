@@ -2,7 +2,7 @@
   "$schema": "../../node_modules/@easyops/brick-types/.schema/storyboard.json",
   "imports": ["@bricks/basic-bricks"],
   "app": {
-    "name": "User Admin",
+    "name": "用户管理",
     "id": "user-admin",
     "homepage": "/user-admin"
   },
@@ -10,6 +10,12 @@
     {
       "path": "/user-admin",
       "exact": true,
+      "menu": {
+        "sidebarMenu": {
+          "title": "用户管理",
+          "menuItems": []
+        }
+      },
       "bricks": [
         {
           "brick": "basic-bricks.micro-view",
@@ -78,6 +84,19 @@
     {
       "path": "${APP.homepage}/create",
       "exact": true,
+      "menu": {
+        "sidebarMenu": {
+          "title": "用户管理",
+          "menuItems": []
+        },
+        "breadcrumb": {
+          "items": [
+            {
+              "text": "新建"
+            }
+          ]
+        }
+      },
       "bricks": [
         {
           "brick": "basic-bricks.micro-view",

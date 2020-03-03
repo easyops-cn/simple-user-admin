@@ -22,6 +22,9 @@
     "postpack:tar": "node scripts/rename-tar-package.js"
   },
   "peerDependencies": {
-    "@bricks/basic-bricks": "^1.11.0"
+    "@bricks/basic-bricks": "^1.11.0",
+    "@bricks/forms": "^1.48.0",
+    "@bricks/presentational-bricks": "^1.67.0",
+    "@bricks/user-admin": "^0.1.0"
   }
 }

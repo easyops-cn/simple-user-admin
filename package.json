@@ -20,12 +20,18 @@
     "yo-debug": "node --inspect-brk ./node_modules/@easyops/brick-scripts/dist/index.js"
   },
   "browserslist": {
-    "development": ["extends @easyops/browserslist-config-next/development"],
-    "production": ["extends @easyops/browserslist-config-next/production"]
+    "development": [
+      "extends @easyops/browserslist-config-next/development"
+    ],
+    "production": [
+      "extends @easyops/browserslist-config-next/production"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@bricks/basic-bricks": "^1.11.0",
+    "@bricks/forms": "^1.48.0",
+    "@bricks/presentational-bricks": "^1.67.0",
     "@dll/ace": "^1.0.92",
     "@dll/d3": "^1.1.0",
     "@dll/echarts": "^1.0.2",
@@ -80,7 +86,17 @@
     "rimraf": "^3.0.0",
     "typescript": "~3.7.2"
   },
-  "workspaces": ["bricks/*", "libs/*", "micro-apps/*", "templates/*"],
-  "resolutions": { "@types/react": "^16.9.11", "lodash": "^4.17.15" },
-  "easyops": { "create-next-repo": "0.6.32" }
+  "workspaces": [
+    "bricks/*",
+    "libs/*",
+    "micro-apps/*",
+    "templates/*"
+  ],
+  "resolutions": {
+    "@types/react": "^16.9.11",
+    "lodash": "^4.17.15"
+  },
+  "easyops": {
+    "create-next-repo": "0.6.32"
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "@micro-apps/faker-demo",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "homepage": "undefined/tree/master/micro-apps/faker-demo",
+  "license": "UNLICENSED",
+  "files": [
+    "storyboard.json",
+    "deploy",
+    "icons",
+    "version.ini"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@git.easyops.local:anyclouds/brick-next.git"
+  },
+  "scripts": {
+    "build": "echo 'nothing to build but lerna need this to build deps'",
+    "postbuild": "node scripts/post-build.js",
+    "prepack:tar": "node scripts/generate-version-file.js && npm run build",
+    "pack:tar": "npm pack",
+    "postpack:tar": "node scripts/rename-tar-package.js"
+  },
+  "peerDependencies": {
+    "@bricks/basic-bricks": "^1.11.0"
+  }
+}

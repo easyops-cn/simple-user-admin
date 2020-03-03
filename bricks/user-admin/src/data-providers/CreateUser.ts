@@ -1,10 +1,16 @@
 import { createProviderClass } from "@easyops/brick-utils";
+import { http } from "@easyops/brick-http";
 
 // eslint-disable-next-line
-export interface CreateUserParams {}
+export interface CreateUserParams {
+  name: string;
+  age: number;
+  address: string;
+}
 
-export function CreateUser(params: CreateUserParams): Promise<any> {
-  return null;
+export async function CreateUser(params: CreateUserParams): Promise<any> {
+  const resp = await http.post("http://127.0.0.1:8000", params);
+  return resp;
 }
 
 customElements.define(

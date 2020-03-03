@@ -13,19 +13,31 @@
       "bricks": [
         {
           "brick": "basic-bricks.micro-view",
+          "properties": {
+            "pageTitle": "用户列表"
+          },
           "slots": {
-            "content": {
+            "toolbar": {
               "type": "bricks",
               "bricks": [
                 {
-                  "brick": "div",
+                  "brick": "basic-bricks.general-button",
                   "properties": {
-                    "textContent": "hello, faker"
+                    "buttonName": "新建",
+                    "buttonIcon": "plus"
+                  },
+                  "events": {
+                    "general.button.click": {
+                      "action": "history.push",
+                      "args": ["${APP.homepage}/create"]
+                    }
                   }
-                },
-                {
-                  "brick": "user-admin.user-admin"
-                },
+                }
+              ]
+            },
+            "content": {
+              "type": "bricks",
+              "bricks": [
                 {
                   "brick": "user-admin.provider-user-list",
                   "bg": true
@@ -85,7 +97,28 @@
                       "type": "bricks",
                       "bricks": [
                         {
+                          "brick": "user-admin.provider-create-user",
+                          "bg": true,
+                          "events": {
+                            "response.success": {
+                              "action": "history.push",
+                              "args": ["${APP.homepage}"]
+                            }
+                          }
+                        },
+                        {
                           "brick": "forms.general-form",
+                          "events": {
+                            "validate.success": {
+                              "target": "user-admin\\.provider-create-user",
+                              "method": "setArgsAndExecute",
+                              "args": [{ "0": "${event.detail}" }]
+                            },
+                            "validate.error": {
+                              "action": "console.warn",
+                              "args": ["${EVENT.type}", "${EVENT.detail}"]
+                            }
+                          },
                           "slots": {
                             "items": {
                               "type": "bricks",
@@ -128,7 +161,8 @@
                                       "action": "console.log"
                                     },
                                     "cancel.button.click": {
-                                      "action": "console.log"
+                                      "action": "history.push",
+                                      "args": ["${APP.homepage}"]
                                     }
                                   }
                                 }

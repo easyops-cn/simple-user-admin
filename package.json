@@ -29,7 +29,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
+    "@babel/core": "^7.8.7",
     "@bricks/basic-bricks": "^1.11.0",
     "@bricks/forms": "^1.48.0",
     "@bricks/presentational-bricks": "^1.67.0",

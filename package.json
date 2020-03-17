@@ -71,7 +71,7 @@
     "document-register-element": "^1.14.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "enzyme-to-json": "^3.4.3",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",

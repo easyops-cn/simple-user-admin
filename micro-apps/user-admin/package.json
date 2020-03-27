@@ -10,10 +10,6 @@
     "icons",
     "version.ini"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/easyops-cn/simple-user-admin"
-  },
   "scripts": {
     "build": "echo 'nothing to build but lerna need this to build deps'",
     "postbuild": "node scripts/post-build.js",

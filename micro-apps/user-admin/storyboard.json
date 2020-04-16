@@ -2,6 +2,7 @@
   "$schema": "../../node_modules/@easyops/brick-types/.schema/storyboard.json",
   "imports": [
     "@bricks/basic-bricks",
+    "@bricks/container-brick",
     "@bricks/presentational-bricks",
     "@bricks/user-admin",
     "@bricks/forms"
@@ -13,9 +14,152 @@
   },
   "routes": [
     {
-      "path": "/user-admin",
+      "path": "${APP.homepage}",
+      "exact": true,
+      "redirect": "${APP.homepage}/faker/list"
+    },
+    {
+      "path": "${APP.homepage}/faker/list",
+      "providers": ["user-admin.provider-faker-list"],
       "exact": true,
       "menu": {
+        "breadcrumb": {
+          "items": [
+            {
+              "text": "Faker List"
+            }
+          ]
+        },
+        "sidebarMenu": {
+          "title": "用户管理",
+          "menuItems": [
+            {
+              "text": "用户列表（来自跨域接口）",
+              "to": "/user-admin/user/list"
+            }
+          ]
+        }
+      },
+      "bricks": [
+        {
+          "brick": "basic-bricks.micro-view",
+          "properties": {
+            "pageTitle": "Faker List"
+          },
+          "slots": {
+            "content": {
+              "type": "bricks",
+              "bricks": [
+                {
+                  "brick": "basic-bricks.general-card",
+                  "slots": {
+                    "content": {
+                      "type": "bricks",
+                      "bricks": [
+                        {
+                          "brick": "container-brick.search-bar",
+                          "slots": {
+                            "end": {
+                              "type": "bricks",
+                              "bricks": [
+                                {
+                                  "brick": "basic-bricks.general-button",
+                                  "properties": {
+                                    "buttonType": "primary",
+                                    "buttonIcon": "reload"
+                                  },
+                                  "events": {
+                                    "general.button.click": {
+                                      "target": "user-admin\\.provider-faker-list",
+                                      "method": "execute",
+                                      "callback": {
+                                        "success": {
+                                          "target": "presentational-bricks\\.brick-table",
+                                          "properties": {
+                                            "dataSource": "${EVENT.detail}"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "brick": "presentational-bricks.brick-table",
+                          "lifeCycle": {
+                            "useResolves": [
+                              {
+                                "provider": "user-admin\\.provider-faker-list",
+                                "name": "dataSource"
+                              }
+                            ]
+                          },
+                          "properties": {
+                            "showCard": false,
+                            "columns": [
+                              {
+                                "title": "姓",
+                                "dataIndex": "firstname"
+                              },
+                              {
+                                "title": "名",
+                                "dataIndex": "lastname"
+                              },
+                              {
+                                "title": "邮箱",
+                                "dataIndex": "email"
+                              },
+                              {
+                                "title": "手机",
+                                "dataIndex": "phone"
+                              },
+                              {
+                                "title": "国家",
+                                "dataIndex": "address.country"
+                              },
+                              {
+                                "title": "城市",
+                                "dataIndex": "address.city"
+                              },
+                              {
+                                "title": "街道",
+                                "dataIndex": "address.street"
+                              },
+                              {
+                                "title": "邮政编码",
+                                "dataIndex": "address.postcode"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "/user-admin/user/list",
+      "exact": true,
+      "menu": {
+        "breadcrumb": {
+          "items": [
+            {
+              "text": "Faker List",
+              "to": "${APP.homepage}/faker/list"
+            },
+            {
+              "text": "User List (CORS)"
+            }
+          ]
+        },
         "sidebarMenu": {
           "title": "用户管理",
           "menuItems": []

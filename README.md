@@ -38,3 +38,39 @@ yarn serve --remote --local-bricks=user-admin --local-micro-apps=user-admin --se
 ```shell
 python server.py
 ```
+
+### 自定义 Provider 构件
+
+首先通过 `yarn yo` 命令创建一个 provider 构件，然后请求数据，按需处理。值得注意的是，请求的 url 根据后台服务是否接入 easyops 有所不同。
+
+- 通过 easyops 后台组件 `api_gateway` 接入
+
+  - 请求 url 为 `/api/gateway/${your-service-name}/${your-api}`（见 `/bricks/user-admin/src/data-providers/FakerList.ts`）
+  - 在后台组件配置 `api_gateway/conf/conf.yaml` 中写入转发规则，如下配置
+
+- 不接入 easyops, 跨域方式（不推荐）
+  - 请求 url 为 'http://your-server-ip:port/your-api', 以 http 开头（见 `/bricks/user-admin/src/data-providers/UserList.ts`）
+  - 为了支持浏览器的跨域请求，后台服务必须支持 HTTP `OPTIONS` 方法，在该方法的响应中设置 `Access-Control-Allow-Origin: *` 头部（见 `./server.py`）
+
+```yaml
+# 接入方式有两种
+# 一是不经过名字服务解析
+gateway:
+  services:
+    - name: faker.service.*
+      addr_type: direct    #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
+      address: faker.bigstep.dk:80
+      service_name: ~
+      hostname: ~
+      default_policy: allow     # allow|deny
+
+# 一是使用名字服务进行解析
+# 当使用名字服务时，你需要自行注册服务的名字及其所在 IP 和端口
+gateway:
+  services:
+    - name: faker.service.*
+      addr_type: ens    #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
+      service_name: logic.faker.demo
+      hostname: ~
+      default_policy: allow     # allow|deny
+```

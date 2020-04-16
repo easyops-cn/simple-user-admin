@@ -1042,6 +1042,11 @@
   resolved "http://r.pnpm.easyops.cn/@bricks/basic-bricks/download/@bricks/basic-bricks-1.38.1.tgz#a0198fffb5db818e2b020bea61e612b0b6a5d1c7"
   integrity sha1-oBmP/7XbgY4rAgvqYeYSsLal0cc=
 
+"@bricks/container-brick@^2.10.3":
+  version "2.10.3"
+  resolved "http://r.pnpm.easyops.cn/@bricks/container-brick/download/@bricks/container-brick-2.10.3.tgz#e15792119a8c8dd55b29a8d29c658b849336c2ea"
+  integrity sha1-4VeSEZqMjdVbKajSnGWLhJM2wuo=
+
 "@bricks/forms@^1.48.0":
   version "1.48.0"
   resolved "http://r.pnpm.easyops.cn/@bricks/forms/download/@bricks/forms-1.48.0.tgz#98f29199152581bea8b7a015e374ca5456933749"

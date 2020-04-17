@@ -90,17 +90,17 @@ gateway:
     - name: faker.service.*
       addr_type: ens #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
       service_name: logic.faker.demo
-      hostname: ~
+      hostname: faker.bigstep.dk
       default_policy: allow # allow|deny
 ```
 
 名字服务
 
 ```shell
-# 注册, [service_name] [port] [host]
-ens_client/tools/register_service.py logic.faker.demo 80 faker.bigstep.dk
-# 注销, [service_name] [port] [host]
-ens_client/tools/unregister_service.py logic.faker.demo 80 faker.bigstep.dk
+# 注册, [service_name] [port] [ip]
+ens_client/tools/register_service.py logic.faker.demo 80 93.191.156.45
+# 注销, [service_name] [port] [ip]
+ens_client/tools/unregister_service.py logic.faker.demo 80 93.191.156.45
 # 验证
 ens_client/tools/get_all_service.py logic.faker.demo
 ```

@@ -46,31 +46,61 @@ python server.py
 - 通过 easyops 后台组件 `api_gateway` 接入
 
   - 请求 url 为 `/api/gateway/${your-service-name}/${your-api}`（见 `/bricks/user-admin/src/data-providers/FakerList.ts`）
-  - 在后台组件配置 `api_gateway/conf/conf.yaml` 中写入转发规则，如下配置
+  - 在 `api_gateway` 中配置转发规则，见下
 
 - 不接入 easyops, 跨域方式（不推荐）
   - 请求 url 为 'http://your-server-ip:port/your-api', 以 http 开头（见 `/bricks/user-admin/src/data-providers/UserList.ts`）
   - 为了支持浏览器的跨域请求，后台服务必须支持 HTTP `OPTIONS` 方法，在该方法的响应中设置 `Access-Control-Allow-Origin: *` 头部（见 `./server.py`）
 
+### `api_gateway` 转发规则配置
+
+配置方式有两种 _（这里以接入第三方服务 http://faker.bigstep.dk/ 为例）_
+
+代码 `FakerList.ts` 中，请求 url 为
+
+```ts
+const url = "/api/gateway/faker.service.get/api/v1/person/10";
+```
+
+- `/api/gateway` -- 将经 `api_gateway` 组件转发
+- `faker.service.get` -- 在 `api_gateway` 中可配置多个转发规则，根据此服务名来匹配转发规则
+- `/api/v1/person/10` -- 实际请求 api
+
+配置文件：`api_gateway/conf/conf.yaml`
+
+- 不经过名字服务解析
+
 ```yaml
-# 接入方式有两种
-# 一是不经过名字服务解析
 gateway:
   services:
     - name: faker.service.*
-      addr_type: direct    #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
+      addr_type: direct #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
       address: faker.bigstep.dk:80
       service_name: ~
       hostname: ~
-      default_policy: allow     # allow|deny
+      default_policy: allow # allow|deny
+```
 
-# 一是使用名字服务进行解析
+- 使用名字服务进行解析
+
+```yaml
 # 当使用名字服务时，你需要自行注册服务的名字及其所在 IP 和端口
 gateway:
   services:
     - name: faker.service.*
-      addr_type: ens    #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
+      addr_type: ens #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
       service_name: logic.faker.demo
       hostname: ~
-      default_policy: allow     # allow|deny
+      default_policy: allow # allow|deny
+```
+
+名字服务
+
+```shell
+# 注册, [service_name] [port] [host]
+ens_client/tools/register_service.py logic.faker.demo 80 faker.bigstep.dk
+# 注销, [service_name] [port] [host]
+ens_client/tools/unregister_service.py logic.faker.demo 80 faker.bigstep.dk
+# 验证
+ens_client/tools/get_all_service.py logic.faker.demo
 ```

@@ -11,11 +11,14 @@
     "version.ini"
   ],
   "scripts": {
-    "build": "echo 'nothing to build but lerna need this to build deps'",
+    "build": "node scripts/build.js",
     "postbuild": "node scripts/post-build.js",
     "prepack:tar": "node scripts/generate-version-file.js && npm run build",
     "pack:tar": "npm pack",
-    "postpack:tar": "node scripts/rename-tar-package.js"
+    "postpack:tar": "node scripts/rename-tar-package.js",
+    "start": "concurrently -k -n tsc,build \"tsc -w --preserveWatchOutput\" \"node scripts/build.js -w\"",
+    "prestart": "rimraf dist",
+    "prebuild": "rimraf dist && tsc"
   },
   "peerDependencies": {
     "@bricks/basic-bricks": "^1.11.0",

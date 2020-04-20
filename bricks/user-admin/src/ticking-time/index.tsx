@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrickWrapper, UpdatingElement } from "@easyops/brick-kit";
+import { BrickWrapper, UpdatingElement, property } from "@easyops/brick-kit";
 import { TickingTime } from "./TickingTime";
 
 class TickingTimeElement extends UpdatingElement {
+  @property({ type: Boolean })
+  isPause: boolean;
+
   connectedCallback(): void {
     // Don't override user's style settings.
     // istanbul ignore else
@@ -22,7 +25,7 @@ class TickingTimeElement extends UpdatingElement {
     if (this.isConnected) {
       ReactDOM.render(
         <BrickWrapper>
-          <TickingTime />
+          <TickingTime isPause={this.isPause} />
         </BrickWrapper>,
         this
       );

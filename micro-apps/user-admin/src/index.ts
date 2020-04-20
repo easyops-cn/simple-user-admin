@@ -45,6 +45,28 @@ const storyboard: Storyboard = {
                         {
                           brick: "container-brick.search-bar",
                           slots: {
+                            start: {
+                              type: "bricks",
+                              bricks: [
+                                {
+                                  brick: "user-admin.ticking-time"
+                                },
+                                {
+                                  brick: "forms.general-checkbox",
+                                  properties: {
+                                    options: ["暂停"]
+                                  },
+                                  events: {
+                                    "general.checkbox.change": {
+                                      target: "user-admin\\.ticking-time",
+                                      properties: {
+                                        isPause: "${EVENT.detail|includes:暂停}"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
                             end: {
                               type: "bricks",
                               bricks: [

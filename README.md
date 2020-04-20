@@ -97,10 +97,39 @@ gateway:
 名字服务
 
 ```shell
+# 93.191.156.45 为域名 faker.bigstep.dk 的 ip，可能会变，请在使用时 ping 下得到实际的ip
 # 注册, [service_name] [port] [ip]
 ens_client/tools/register_service.py logic.faker.demo 80 93.191.156.45
 # 注销, [service_name] [port] [ip]
 ens_client/tools/unregister_service.py logic.faker.demo 80 93.191.156.45
 # 验证
 ens_client/tools/get_all_service.py logic.faker.demo
+```
+
+### 接入第三方服务的权限问题
+
+- 若第三方服务内部已实现鉴权，可通过获取 `api_gateway` 传递过来的当前登录用户信息自行鉴权
+- 若第三方服务需要对接 `easyops` 平台的权限中心，参考 `./server.py`
+
+> 如何获得用户信息？\
+> \
+> **通过 `api_gateway` 转发的都可以在 HTTP 头部获得 user 和 org 字段**
+
+为了能正确将 demo 跑起来
+
+- 运行 `./server.py` 时，确保当前主机有 `permission` 组件
+- 确保你已将 `./server.py` 接入到 `api_gateway`，配置如下
+
+```yaml
+gateway:
+  services:
+    - name: user-list.demo.*
+      addr_type: ens #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
+      service_name: logic.user-list.demo
+      default_policy: allow # allow|deny
+```
+
+```shell
+# 注册名字服务
+ens_client/tools/register_service.py logic.user-list.demo 8000 127.0.0.1
 ```

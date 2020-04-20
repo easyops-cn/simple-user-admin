@@ -24,7 +24,7 @@ const storyboard: Storyboard = {
         sidebarMenu: {
           title: "用户管理",
           menuItems: [
-            { text: "用户列表（来自跨域接口）", to: "/user-admin/user/list" }
+            { text: "用户列表（鉴权例子）", to: "/user-admin/user/list" }
           ]
         }
       },
@@ -141,7 +141,7 @@ const storyboard: Storyboard = {
         breadcrumb: {
           items: [
             { text: "Faker List", to: "${APP.homepage}/faker/list" },
-            { text: "User List (CORS)" }
+            { text: "User List (鉴权)" }
           ]
         },
         sidebarMenu: { title: "用户管理", menuItems: [] }

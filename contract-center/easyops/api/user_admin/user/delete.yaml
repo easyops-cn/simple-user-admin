@@ -1,0 +1,25 @@
+_version_: 2.0
+_kind_: interface
+
+version: 1.0.0
+name: "DeleteUser"
+description: "删除用户"
+
+import:
+  - easyops/model/user/user
+
+endpoint:
+  method: "DELETE"
+  uri: "/api/v1/users/:name"
+
+request:
+  type: object
+  fields:
+    - name: name
+      type: user_name
+      description: 要删除的用户名称 
+
+  required:
+    - name
+    
+response: ~

@@ -1,0 +1,32 @@
+_version_: 2.0
+_kind_: model
+
+name: User
+description: "用户"
+fields:
+  - name: name
+    type: user_name
+    description: 用户名称
+
+  - name: age
+    type: int
+    description: 用户年龄
+    validate:
+      gte: 0
+      lte: 200
+
+  - name: address
+    type: string
+    description: 用户联系地址
+
+  - name: valid
+    type: bool
+    description: 是否有效
+
+  - name: ctime
+    type: datetime
+    description: 创建时间, 服务端自动生成
+
+  - name: mtime
+    type: datetime
+    description: 修改时间, 服务端自动生成

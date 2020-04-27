@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "fields定义的json-schema 版本V2",
+  "type": "object",
+  "additionalProperties": false,
+  "definitions": {
+    "field": {
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "字段名"
+        },
+        "type": {
+          "type": "string",
+          "description": "字段类型，只能为内置类型和自定义类型"
+        },
+        "description": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/field"},
+              { "$ref": "#/definitions/fieldRef"}
+            ]
+          }
+        },
+        "validate": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string"
+            },
+            "gte": {
+              "type": "number"
+            },
+            "lte": {
+              "type": "number"
+            },
+            "gt": {
+              "type": "number"
+            },
+            "lt": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+
+    "fieldRef": {
+      "type": "object",
+      "required": [
+        "ref"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

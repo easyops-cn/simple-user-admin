@@ -1,0 +1,20 @@
+_version_: 2.0
+_kind_: "interface"
+
+version: 1.0.0
+name: "List"
+description: "用户列表"
+
+import:
+  - easyops/model/user/user
+
+endpoint:
+  method: "LIST"
+  uri: "/api/v1/users"
+
+request: ~
+
+response:
+  type: User
+  required:
+    - User.*

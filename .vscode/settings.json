@@ -1,9 +1,0 @@
-{
-    "yaml.validate": true,
-    "yaml.schemas": {
-        "./contract-center/easyops/schema/brick.json":     "./contract-center/easyops/brick/*/*.yaml",
-        "./contract-center/easyops/schema/interface.json": "./contract-center/easyops/api/*/*/*.yaml",
-        "./contract-center/easyops/schema/type.json":      "./contract-center/easyops/type/*.yaml",
-        "./contract-center/easyops/schema/model.json":      "./contract-center/easyops/model/*/*.yaml"
-      }
-}

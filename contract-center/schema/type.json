@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "类型定义的json-schema 版本V2",
+    "type": "object",
+    "additionalProperties": false,
+    "anyOf": [
+      {"required": ["_version_", "_kind_", "name", "type", "description", "enum"]},
+      {"required": ["_version_", "_kind_", "name", "type", "description", "validate"]}
+    ],
+
+    "properties": {
+      "_version_": {
+        "type": [
+          "number",
+          "string"
+        ],
+        "description": "类型契约协议版本"
+      },
+      "_kind_": {
+        "type": "string",
+        "enum": ["type"]
+      },
+      "name": {
+        "type": "string",
+        "description": "类型英文名, 下划线分隔的小写字母命名"
+      },
+      "type": {
+        "type": "string",
+        "enum": ["string", "int", "bool", "float", "file", "map"],
+        "description": "类型，只能使用简单内置类型"
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1,
+        "description": "类型中文名, 必填, 不能为空"
+      },
+      "enum": {
+        "type": "array",
+        "description": "枚举限定值范围"
+      },
+      "validate": {
+        "type": "object",
+        "properties": {
+          "pattern": {"type": "string"},
+          "gte": {"type": "number"},
+          "lte": {"type": "number"},
+          "gt": {"type": "number"},
+          "lt": {"type": "number"}
+        },
+        "additionalProperties": false
+      }
+    }
+}
+  

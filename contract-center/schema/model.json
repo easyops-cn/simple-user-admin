@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "模型定义的json-schema 版本V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_version_",
+    "_kind_",
+    "name",
+    "description",
+    "fields"
+  ],
+  "properties": {
+    "_version_": {
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "模型契约协议版本"
+    },
+    "_kind_": {
+      "type": "string",
+      "enum": [
+        "model"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "模型英文名, 大写驼峰字母命名"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "模型中文名, 必填, 不能为空"
+    },
+    "import": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fields": {
+      "type": "array",
+      "description": "当request的type为object时，自定义请求体",
+      "items": {
+        "oneOf": [
+          { "$ref": "fields.json#/definitions/field" },
+          { "$ref": "fields.json#/definitions/fieldRef" }
+        ]
+      }
+    }
+  }
+}

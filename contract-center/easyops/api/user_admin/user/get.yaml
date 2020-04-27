@@ -1,0 +1,29 @@
+_version_: 2.0
+_kind_: interface
+
+version: 1.0.0
+name: "Get"
+description: "获取用户详情"
+
+import:
+  - easyops/model/user/user
+
+endpoint:
+  method: "GET"
+  uri: "/api/v1/users/:name"
+
+request:
+  type: object
+  fields:
+    - name: name
+      type: user_name
+      description: 要获取的用户名称
+
+  required:
+    - name
+
+response:
+  type: User
+
+  required:
+    - User.*

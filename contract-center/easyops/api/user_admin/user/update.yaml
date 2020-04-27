@@ -1,0 +1,23 @@
+_version_: 2.0
+_kind_: interface
+
+version: 1.0.0
+name: "Update"
+description: "修改用户"
+
+import:
+  - easyops/model/user/user
+
+endpoint:
+  method: "PUT"
+  uri: "/api/v1/users/:name"
+
+request:
+  type: User
+  required:
+    - User.*
+
+response:
+  type: User
+  required:
+    - User.*

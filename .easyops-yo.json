@@ -1,5 +1,5 @@
 {
   "contractYamlDir": "easyops",
   "contractUrl": "https://github.com/easyops-cn/contract-center.git",
-  "getSdkFromNextSdkRepo": false
+  "useLocalSdk": true
 }

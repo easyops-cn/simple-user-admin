@@ -123,7 +123,7 @@ ens_client/tools/get_all_service.py logic.faker.demo
 ```yaml
 gateway:
   services:
-    - name: user-list.demo.*
+    - name: user_admin.user.*
       addr_type: ens #ens|direct, direct表示不走ens解析，直接配置目标地址,不填时默认为ens
       service_name: logic.user-list.demo
       default_policy: allow # allow|deny
@@ -131,5 +131,5 @@ gateway:
 
 ```shell
 # 注册名字服务
-ens_client/tools/register_service.py logic.user-list.demo 8000 127.0.0.1
+ /usr/local/easyops/ens_client/tools/register_service.py logic.user-list.demo 8000 127.0.0.1
 ```

@@ -94,6 +94,9 @@ gateway:
       default_policy: allow # allow|deny
 ```
 
+修改完之后重启生效：`cd /usr/local/easyops/api_gateway/ && easyops restart`
+
+
 名字服务
 
 ```shell

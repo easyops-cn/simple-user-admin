@@ -4,7 +4,6 @@
   "rangeStrategy": "bump",
   "semanticCommits": true,
   "commitMessagePrefix": "chore(deps):",
-  "assignees": ["weareoutman"],
   "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
     { "depTypeList": ["devDependencies"], "automerge": true },
